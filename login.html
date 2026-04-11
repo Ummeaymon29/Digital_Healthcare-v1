@@ -8,21 +8,22 @@
 
 <h2>User Login</h2>
 
-<form>
-    <label>Email</label><br>
-    <input type="email" placeholder="Enter email" required><br><br>
+<form action="login.php" method="POST">
 
-    <label>Password</label><br>
-    <input type="password" placeholder="Enter password" required><br><br>
-    <label>Password</label><br>
+<label>Email</label><br>
+<input type="email" name="email" placeholder="Enter email" required><br><br>
 
-    <label>User Role</label><br>
-    <select>
-        <option>Doctor</option>
-        <option>Patient</option>
-    </select><br><br>
+<label>Password</label><br>
+<input type="password" name="password" placeholder="Enter password" required><br><br>
 
-    <button type="submit">Login</button>
+<label>User Role</label><br>
+<select name="role">
+    <option>Doctor</option>
+    <option>Patient</option>
+</select><br><br>
+
+<button type="submit">Login</button>
+
 </form>
 
 </body>
