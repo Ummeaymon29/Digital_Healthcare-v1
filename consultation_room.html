@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultation Room</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/consultation.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card consultation-room">
+      <div class="room-header">
+        <h2>Consultation Room</h2>
+        <span id="statusBadge" class="status pending">Connecting...</span>
+      </div>
+
+      <div class="video-container">
+        <!-- Remote Doctor Video -->
+        <div class="video-box remote">
+          <video id="remoteVideo" autoplay playsinline muted></video>
+          <div class="video-overlay">
+            <span id="remoteName">Dr. [Name]</span>
+            <div class="placeholder-icon">👨‍⚕️</div>
+          </div>
+        </div>
+        <!-- Local Patient Video -->
+        <div class="video-box local">
+          <video id="localVideo" autoplay playsinline muted></video>
+          <div class="video-overlay">
+            <span>You</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="muteBtn" class="control-btn" title="Toggle Mic">🎤 Mute</button>
+        <button id="camBtn" class="control-btn" title="Toggle Camera">📷 Camera</button>
+        <button id="endBtn" class="control-btn end" title="End Call">📞 End Call</button>
+      </div>
+
+      <div class="chat-box">
+        <h3>Text Chat (Fallback)</h3>
+        <div id="chatMessages" class="chat-messages"></div>
+        <form id="chatForm" class="chat-form">
+          <input type="text" id="chatInput" placeholder="Type a message..." required>
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const muteBtn = document.getElementById('muteBtn');
+      const camBtn = document.getElementById('camBtn');
+      const endBtn = document.getElementById('endBtn');
+      const chatForm = document.getElementById('chatForm');
+      const chatInput = document.getElementById('chatInput');
+      const chatMessages = document.getElementById('chatMessages');
+      const statusBadge = document.getElementById('statusBadge');
+
+      let isMuted = false, isCamOff = false;
+
+      muteBtn.addEventListener('click', () => {
+        isMuted = !isMuted;
+        muteBtn.textContent = isMuted ? '🔇 Unmute' : '🎤 Mute';
+        muteBtn.classList.toggle('active', isMuted);
+        // TODO: Member 2 - Hook to WebRTC/SDK: audioTrack.muted = isMuted
+      });
+
+      camBtn.addEventListener('click', () => {
+        isCamOff = !isCamOff;
+        camBtn.textContent = isCamOff ? '📷 Camera On' : '📷 Camera Off';
+        camBtn.classList.toggle('active', isCamOff);
+        // TODO: Member 2 - Hook to WebRTC/SDK: videoTrack.enabled = !isCamOff
+      });
+
+      endBtn.addEventListener('click', () => {
+        if(confirm('End consultation?')) {
+          statusBadge.textContent = 'Disconnected';
+          statusBadge.className = 'status rejected';
+          // TODO: Member 2 - Send end-call signal to backend, save history
+          setTimeout(() => window.location.href = 'dashboard.html', 1500);
+        }
+      });
+
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const msg = chatInput.value.trim();
+        if(msg) {
+          const div = document.createElement('div');
+          div.className = 'chat-msg';
+          div.innerHTML = `<span class="sender">You:</span> ${msg}`;
+          chatMessages.appendChild(div);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          chatInput.value = '';
+          // TODO: Member 2 - Replace with WebSocket/SDK message send
+        }
+      });
+
+      // Simulate connection delay
+      setTimeout(() => {
+        statusBadge.textContent = 'Connected';
+        statusBadge.className = 'status accepted';
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

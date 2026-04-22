@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Register</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<h2>User Registration</h2>
-
-<form action="register.php" method="POST">
-
-<label>Full Name</label><br>
-<input type="text" name="fullname" placeholder="Enter name" required><br><br>
-
-<label>Email</label><br>
-<input type="email" name="email" placeholder="Enter email" required><br><br>
-
-<label>Password</label><br>
-<input type="password" name="password" placeholder="Create password" required><br><br>
-
-<label>User Role</label><br>
-<select name="role">
-    <option>Doctor</option>
-    <option>Patient</option>
-</select><br><br>
-
-<button type="submit">Register</button>
-
-</form>
-
+  <div class="container card">
+    <h2>User Registration</h2>
+    <form action="/auth/register" method="POST" id="registerForm">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="fullname" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" required minlength="6">
+      </div>
+      <div class="form-group">
+        <label>User Role</label>
+        <select name="role" required>
+          <option value="doctor">Doctor</option>
+          <option value="patient">Patient</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-block">Register</button>
+    </form>
+  </div>
 </body>
 </html>
