@@ -1,19 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Healthcare System</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Healthcare & Medicine Reminder</title>
+<style>
+:root{--primary:#2563eb;--primary-dark:#1d4ed8;--secondary:#0ea5e9;--bg:#f8fafc;--text:#1e293b;--card:#fff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.nav{background:var(--card);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.08);position:sticky;top:0;z-index:100;}
+.logo{font-size:20px;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:8px;}
+.logo-icon{font-size:24px;}
+.nav-links a{margin-left:20px;text-decoration:none;color:var(--text);font-weight:500;transition:.3s;}
+.nav-links a:hover{color:var(--primary);}
+.btn{padding:10px 22px;border:none;border-radius:8px;cursor:pointer;font-weight:600;text-decoration:none;transition:.3s;display:inline-block;}
+.btn-primary{background:var(--primary);color:#fff;}
+.btn-primary:hover{background:var(--primary-dark);}
+.btn-outline{border:2px solid var(--primary);color:var(--primary);background:transparent;}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+
+.hero{padding:80px 20px;text-align:center;background:linear-gradient(135deg,#dbeafe 0%,#f0f9ff 100%);}
+.hero h1{font-size:36px;margin-bottom:15px;color:var(--text);}
+.hero p{font-size:18px;color:#64748b;max-width:600px;margin:0 auto 30px;}
+.hero-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;}
+
+.features{padding:60px 20px;max-width:1200px;margin:0 auto;}
+.features h2{text-align:center;margin-bottom:40px;font-size:28px;}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+.feature-card{background:var(--card);padding:25px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.06);text-align:center;transition:.3s;}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.1);}
+.feature-icon{font-size:40px;margin-bottom:15px;}
+.feature-card h3{margin-bottom:10px;color:var(--primary);}
+.feature-card p{color:#64748b;font-size:14px;}
+
+.footer{background:#1e293b;color:#cbd5e1;text-align:center;padding:25px;margin-top:40px;font-size:14px;}
+
+@media(max-width:768px){
+.hero h1{font-size:28px;}
+.nav{flex-wrap:wrap;gap:10px;}
+.nav-links{width:100%;display:flex;justify-content:center;gap:15px;}
+.nav-links a{margin:0;}
+}
+</style>
 </head>
 <body>
-  <div class="container card">
-    <h1>Digital Healthcare System</h1>
-    <p>Online Consultation & Medicine Management</p>
-    <div class="nav">
-      <a href="login.html">Login</a>
-      <a href="register.html">Register</a>
-    </div>
-  </div>
+
+<nav class="nav">
+<div class="logo"><span class="logo-icon">🏥</span>Digital Healthcare & Medicine Reminder</div>
+<div class="nav-links">
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Digital Healthcare & Medicine Reminder</h1>
+<p>Effortlessly manage medicine reminders, book doctor consultations, and track your health records. Your health is our priority.</p>
+<div class="hero-buttons">
+<a href="register.html" class="btn btn-primary">Get Started</a>
+<a href="login.html" class="btn btn-outline">Login to Account</a>
+</div>
+</section>
+
+<section class="features">
+<h2>Our Key Features</h2>
+<div class="feature-grid">
+<div class="feature-card">
+<div class="feature-icon">💊</div>
+<h3>Medicine Reminders</h3>
+<p>Automated alerts and smart schedule management for your medications.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">🩺</div>
+<h3>Online Consultation</h3>
+<p>Connect with doctors via secure video or chat from anywhere.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">📋</div>
+<h3>Health Records</h3>
+<p>Secure, centralized digital medical history accessible anytime.</p>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+© 2026 Digital Healthcare & Medicine Reminder. All rights reserved.
+</footer>
+
 </body>
 </html>
