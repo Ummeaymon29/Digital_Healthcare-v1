@@ -1,15 +1,23 @@
 <?php
+session_start();
 include "db.php";
 
-$consultation_id = $_GET['id'];
+if (!isset($_GET['id'])) {
+    header("Location: doctor_dashboard.php?msg=Invalid+Request&type=error");
+    exit();
+}
+
+$consultation_id = intval($_GET['id']);
 
 $query = "UPDATE consultations 
           SET status='completed', end_time=NOW() 
           WHERE id='$consultation_id'";
 
 if(mysqli_query($conn, $query)){
-    echo "Consultation Ended";
+   
+    header("Location: history.php?msg=Consultation+ended&type=success");
+    exit();
 } else {
-    echo "Error";
+    echo "Error ending consultation";
 }
 ?>
