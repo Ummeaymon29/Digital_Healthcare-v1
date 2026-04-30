@@ -61,6 +61,8 @@ textarea{resize:vertical;min-height:90px;}
 <a href="patient_requests.php" class="link">📄 View My Requests</a><br><br>
 <a href="view_doctors.php" class="link">👨‍⚕️ Browse All Doctors</a><br><br>
 <a href="history.php" class="link">📜 Consultation History</a><br><br>
+<a href="my_prescriptions.php" class="link">💊 My Prescriptions</a><br><br>
+<a href="medicine_search.php" class="link">💊 Medicine Database</a><br><br>
 <a href="logout.php" class="link" style="color:#ef4444;">🚪 Logout</a>
 </div>
 </div>
