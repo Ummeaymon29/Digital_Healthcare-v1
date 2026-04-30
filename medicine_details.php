@@ -54,6 +54,22 @@ h1{margin:0 0 20px;color:var(--primary);}
                 <label>Price</label>
                 <strong>৳<?=number_format($medicine['price'], 2)?></strong>
             </div>
+              <div class="description">
+        <h3>📋 Description</h3>
+        <p><?=nl2br(htmlspecialchars($medicine['description']))?></p>
+    </div>
+    <div class="side-effects">
+        <h3>⚠️ Side Effects</h3>
+        <p><?=nl2br(htmlspecialchars($medicine['side_effects']))?></p>
+    </div>
+          <div class="description" style="background:#dbeafe;border-left-color:#3b82f6;">
+        <h3>💊 Dosage Instructions</h3>
+        <p><?=nl2br(htmlspecialchars($medicine['dosage_instructions']))?></p>
+    </div>
+       <div class="side-effects" style="background:#fef3c7;border-left-color:#f59e0b;">
+        <h3>⚡ Warnings</h3>
+        <p><?=nl2br(htmlspecialchars($medicine['warnings']))?></p>
+    </div>
         </div>
         
         <a href="medicine_search.php" class="btn">← Back to Search</a>
