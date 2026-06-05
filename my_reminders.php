@@ -80,7 +80,6 @@ h1{margin:0 0 20px;}
 else: ?>
     <p style="color:#64748b;text-align:center;">No reminders scheduled for today.</p>
 <?php endif; ?>
-    <p style="color:#64748b;text-align:center;">No active reminders for today.</p>
     <!-- 🔔 Real-Time Alert System -->
 <script>
 let notifReady = false;

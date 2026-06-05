@@ -71,7 +71,7 @@ h1{margin:0 0 25px;color:var(--primary);}
                     <div class="med-item">
                         <h3>💊 <?=htmlspecialchars($med['name'])?></h3>
                         <p><strong>Category:</strong> <?=htmlspecialchars($med['category'])?></p>
-                        <p><strong>Price:</strong> ৳<?=number_format($med['price'], 2)?></p>
+                        <p><strong>Price:</strong> ৳<?=number_format($med['price'], 2)?></p></div>
                 </a>
                 <?php endforeach; ?>
             </div>
