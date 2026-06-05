@@ -3,249 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Consultation - Digital Healthcare</title>
+    <title>Register - Digital Healthcare & Medicine Reminder</title>
     <style>
-        :root{
-            --primary:#2563eb;
-            --primary-dark:#1d4ed8;
-            --success:#16a34a;
-            --bg:#f8fafc;
-            --card:#fff;
-            --text:#1e293b;
-            --border:#e2e8f0;
-        }
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{
-            font-family:'Segoe UI',system-ui,sans-serif;
-            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-            min-height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            padding:20px;
-        }
-        .container{
-            background:var(--card);
-            width:100%;
-            max-width:600px;
-            padding:40px;
-            border-radius:20px;
-            box-shadow:0 20px 60px rgba(0,0,0,.3);
-            animation:slideUp 0.5s ease-out;
-        }
-        @keyframes slideUp{
-            from{opacity:0;transform:translateY(30px);}
-            to{opacity:1;transform:translateY(0);}
-        }
-        .header{
-            text-align:center;
-            margin-bottom:30px;
-        }
-        .header h1{
-            font-size:28px;
-            color:var(--primary);
-            margin-bottom:8px;
-        }
-        .header p{
-            color:#64748b;
-            font-size:14px;
-        }
-        .form-group{
-            margin-bottom:22px;
-        }
-        label{
-            display:block;
-            margin-bottom:8px;
-            font-weight:600;
-            color:var(--text);
-            font-size:14px;
-        }
-        .input-wrapper{
-            position:relative;
-        }
-        .input-wrapper .icon{
-            position:absolute;
-            left:15px;
-            top:50%;
-            transform:translateY(-50%);
-            font-size:18px;
-        }
-        input,select,textarea{
-            width:100%;
-            padding:14px 15px 14px 45px;
-            border:2px solid var(--border);
-            border-radius:10px;
-            font-size:15px;
-            transition:all 0.3s ease;
-            background:#f8f9fa;
-            font-family:inherit;
-        }
-        textarea{
-            padding:14px 15px;
-            min-height:120px;
-            resize:vertical;
-        }
-        input:focus,select:focus,textarea:focus{
-            outline:none;
-            border-color:var(--primary);
-            background:#fff;
-            box-shadow:0 0 0 4px rgba(37,99,235,.1);
-        }
-        .btn{
-            width:100%;
-            padding:15px;
-            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-            color:#fff;
-            border:none;
-            border-radius:10px;
-            font-size:16px;
-            font-weight:600;
-            cursor:pointer;
-            transition:all 0.3s ease;
-            margin-top:10px;
-            box-shadow:0 4px 15px rgba(102,126,234,.4);
-        }
-        .btn:hover{
-            transform:translateY(-2px);
-            box-shadow:0 6px 20px rgba(102,126,234,.6);
-        }
-        .back-link{
-            display:block;
-            text-align:center;
-            margin-top:20px;
-            color:#64748b;
-            text-decoration:none;
-            font-size:14px;
-            transition:color 0.3s;
-        }
-        .back-link:hover{
-            color:var(--primary);
-            text-decoration:underline;
-        }
-        .alert{
-            padding:12px;
-            border-radius:8px;
-            margin-bottom:20px;
-            font-size:14px;
-            display:none;
-        }
-        .alert.show{
-            display:block;
-        }
-        .alert-success{
-            background:#dcfce7;
-            color:#166534;
-            border:1px solid #86efac;
-        }
-        .alert-error{
-            background:#fee2e2;
-            color:#991b1b;
-            border:1px solid #fca5a5;
-        }
-        @media(max-width:600px){
-            .container{padding:25px;}
-            .header h1{font-size:24px;}
-        }
+        :root { --primary: #2563eb; --primary-hover: #1d4ed8; --bg: #f0f4f8; --card: #ffffff; --text: #0f172a; --text-muted: #64748b; --border: #e2e8f0; --focus-ring: rgba(37, 99, 235, 0.2); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: linear-gradient(135deg, #e0f2fe 0%, #f8fafc 50%, #dbeafe 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; color: var(--text); }
+        .auth-card { background: var(--card); width: 100%; max-width: 460px; padding: 2.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--border); }
+        .header { text-align: center; margin-bottom: 1.75rem; }
+        .logo { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+        .header p { color: var(--text-muted); font-size: 0.95rem; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
+        .input-wrapper { position: relative; }
+        .input-wrapper input { width: 100%; padding: 0.85rem 1rem 0.85rem 2.8rem; border: 1.5px solid var(--border); border-radius: 10px; font-size: 0.95rem; transition: all 0.2s; background: #fafbfc; }
+        .input-wrapper input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px var(--focus-ring); background: #fff; }
+        .input-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 1.1rem; pointer-events: none; }
+        .role-selector { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .role-btn { flex: 1; padding: 0.75rem; border: 1.5px solid var(--border); border-radius: 8px; background: #fafbfc; cursor: pointer; text-align: center; font-weight: 500; transition: all 0.2s; }
+        .role-btn:hover { border-color: var(--primary); background: #f0f7ff; }
+        .role-btn.active { border-color: var(--primary); background: #eff6ff; color: var(--primary); font-weight: 600; box-shadow: 0 0 0 2px var(--focus-ring); }
+        .role-input { display: none; }
+        .submit-btn { width: 100%; padding: 0.9rem; background: var(--primary); color: #fff; border: none; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem; }
+        .submit-btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+        .footer { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted); }
+        .footer a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 480px) { .auth-card { padding: 1.5rem; } }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="auth-card">
         <div class="header">
-            <h1>🩺 Request Consultation</h1>
-            <p>Fill out the form below to book an appointment</p>
+            <div class="logo">🏥</div>
+            <h1>Create Account</h1>
+            <p>Join our digital healthcare platform</p>
         </div>
-
-        <div id="alertBox" class="alert"></div>
-
-        <form id="consultationForm" action="send_request.php" method="POST">
+        <form action="register.php" method="POST">
             <div class="form-group">
-                <label for="doctor">Select Doctor</label>
+                <label class="form-label">Full Name</label>
                 <div class="input-wrapper">
-                    <span class="icon">👨‍⚕️</span>
-                    <select id="doctor" name="doctor_id" required>
-                        <option value="" disabled selected>-- Choose a Doctor --</option>
-                        <?php
-                        // This PHP block will work when file is .php
-                        include "db.php";
-                        $sql = "SELECT * FROM users WHERE role='Doctor' ORDER BY name";
-                        $result = $conn->query($sql);
-                        while($row = $result->fetch_assoc()) {
-                            echo "<option value='".$row['id']."'>".htmlspecialchars($row['name'])."</option>";
-                        }
-                        ?>
-                    </select>
+                    <span class="input-icon">👤</span>
+                    <input type="text" name="fullname" placeholder="John Doe" required>
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="date">Preferred Date</label>
+                <label class="form-label">Email Address</label>
                 <div class="input-wrapper">
-                    <span class="icon">📅</span>
-                    <input type="date" id="date" name="date" required min="<?php echo date('Y-m-d'); ?>">
+                    <span class="input-icon">📧</span>
+                    <input type="email" name="email" placeholder="you@example.com" required>
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="time">Preferred Time</label>
+                <label class="form-label">Password</label>
                 <div class="input-wrapper">
-                    <span class="icon">⏰</span>
-                    <input type="time" id="time" name="time" required>
+                    <span class="input-icon">🔒</span>
+                    <input type="password" name="password" placeholder="Min 6 characters" required minlength="6">
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="message">Problem Description</label>
-                <textarea id="message" name="message" 
-                    placeholder="Please describe your symptoms or reason for consultation..." 
-                    required></textarea>
+                <label class="form-label">Phone Number (Optional)</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">📱</span>
+                    <input type="tel" name="phone" placeholder="+8801XXXXXXXXX">
+                </div>
             </div>
-
-            <button type="submit" class="btn">📩 Send Request</button>
+            <div class="form-group">
+                <label class="form-label">I am a</label>
+                <div class="role-selector">
+                    <label class="role-btn active">
+                        <input type="radio" name="role" value="Patient" class="role-input" checked>
+                        👤 Patient
+                    </label>
+                    <label class="role-btn">
+                        <input type="radio" name="role" value="Doctor" class="role-input">
+                        🩺 Doctor
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">✨ Create Account</button>
         </form>
-
-        <a href="patient_dashboard.php" class="back-link">← Back to Dashboard</a>
+        <div class="footer">
+            Already have an account? <a href="login.html">🔐 Login here</a>
+        </div>
     </div>
-
     <script>
-        // Form validation & submission
-        document.getElementById('consultationForm').addEventListener('submit', function(e) {
-            const doctor = document.getElementById('doctor').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const message = document.getElementById('message').value.trim();
-            const alertBox = document.getElementById('alertBox');
-
-            // Client-side validation
-            if(!doctor || !date || !time || !message) {
-                e.preventDefault();
-                alertBox.className = 'alert show alert-error';
-                alertBox.textContent = 'Please fill in all fields!';
-                return false;
-            }
-
-            // Check if date is not in the past
-            const selectedDate = new Date(date);
-            const today = new Date();
-            today.setHours(0,0,0,0);
-            
-            if(selectedDate < today) {
-                e.preventDefault();
-                alertBox.className = 'alert show alert-error';
-                alertBox.textContent = 'Please select a future date!';
-                return false;
-            }
-
-            // Show loading state
-            const btn = document.querySelector('.btn');
-            btn.textContent = '⏳ Sending Request...';
-            btn.disabled = true;
+        document.querySelectorAll('.role-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                this.querySelector('input').checked = true;
+            });
         });
-
-        // Auto-hide alert after 5 seconds
-        setTimeout(() => {
-            const alertBox = document.getElementById('alertBox');
-            alertBox.classList.remove('show');
-        }, 5000);
     </script>
 </body>
 </html>

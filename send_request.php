@@ -2,8 +2,8 @@
 session_start();
 include "db.php";
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Patient') {
-    header("Location: login.html"); exit();
+if (!isset($_SESSION['user_id']) || strtolower($_SESSION['role'] ?? '') !== 'patient') {
+header("Location: login.html?msg=Please+login+first&type=error"); exit();
 }
 
 $patient_id = (int)$_SESSION['user_id'];

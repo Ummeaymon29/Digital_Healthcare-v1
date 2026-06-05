@@ -1,32 +1,20 @@
+
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) session_start();
 include "db.php";
-
-if (!isset($_GET['id'])) {
-    header("Location: doctor_dashboard.php?msg=Invalid+Request&type=error");
-    exit();
-}
-
-$consultation_id = intval($_GET['id']);
-
-// Verify doctor ownership (optional but recommended)
-if (isset($_SESSION['user_id']) && $_SESSION['role'] == 'Doctor') {
-    $doctor_id = $_SESSION['user_id'];
-    $query = "UPDATE consultations 
-              SET status='ongoing', start_time=NOW() 
-              WHERE id='$consultation_id' AND doctor_id='$doctor_id'";
-} else {
-    $query = "UPDATE consultations 
-              SET status='ongoing', start_time=NOW() 
-              WHERE id='$consultation_id'";
-}
-
-if(mysqli_query($conn, $query)){
-    // ✅ ভিডিও কল পেজে রিডাইরেক্ট
+if (!isset($_SESSION['user_id']) || strtolower($_SESSION['role'] ?? '') !== 'doctor') { header("Location: login.html"); exit(); }
+$consultation_id = (int)($_GET['id'] ?? 0);
+$doctor_id = (int)$_SESSION['user_id'];
+if ($consultation_id <= 0) { header("Location: doctor_dashboard.php?msg=Invalid+Request&type=error"); exit(); }
+// ⚠️ FIX: Zoom র‍্যান্ডম আইডি সাপোর্ট করে না। নিচে আপনার আসল মিটিং আইডি দিন
+$zoom_id = "5735007045";   // 👈 আপনার Zoom Meeting ID
+$zoom_pwd = "8dd1ohaQYJOenxETaaL4w2v0gCUH0g.1";      // 👈 Password (না থাকলে "" খালি রাখুন)
+$stmt = $conn->prepare("UPDATE consultations SET status='ongoing', start_time=NOW(), zoom_meeting_id=?, zoom_meeting_pwd=? WHERE id=? AND doctor_id=?");
+$stmt->bind_param("ssii", $zoom_id, $zoom_pwd, $consultation_id, $doctor_id);
+if ($stmt->execute() && $stmt->affected_rows > 0) {
     header("Location: video_call.php?id=" . $consultation_id);
-    exit();
 } else {
     header("Location: doctor_dashboard.php?msg=Error+starting+consultation&type=error");
-    exit();
 }
+exit();
 ?>

@@ -1,9 +1,7 @@
 <?php
-session_start();
-include 'db.php';
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Patient') {
-    header("Location: login.html"); exit();
-}
+session_start(); include 'db.php';
+if (!isset($_SESSION['user_id']) || strtolower($_SESSION['role'] ?? '') !== 'patient') { header("Location: login.html"); 
+exit(); }
 $stmt = $conn->prepare("SELECT id, name, phone FROM users WHERE role='Doctor' ORDER BY name");
 $stmt->execute();
 $result = $stmt->get_result();
